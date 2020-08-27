@@ -16,8 +16,7 @@ class TakeImage:
     def take(self):
         # create Video Capture
         key = cv2.waitKey(1)
-        camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-
+        camera = cv2.VideoCapture(0)
         start = time.time()
         pause = False
         while True:
@@ -57,13 +56,13 @@ class TakeImage:
                     pause = False
 
                 # save image
-                if time.time()-start >0.5 and not pause:
+                if time.time()-start > self.duration and not pause:
                     #crop the frame
                     crop = frame[start_y:start_y+self.side,start_x:start_x+self.side]
 
                     # save image
                     image_name = self.getNextName()
-                    if cv2.imwrite(filename=self.directory+self.classname+'\\'+image_name, img=crop):
+                    if cv2.imwrite(filename=self.directory+self.classname+'/'+image_name, img=crop):
                         print(image_name+" is saved in "+self.directory+self.classname)
                     else:
                         print("Fail to save "+image_name)

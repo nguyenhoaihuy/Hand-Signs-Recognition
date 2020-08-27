@@ -22,9 +22,8 @@ class TakeImage:
         self.count = len(os.listdir(directory)) # number of images currently in the directory
         self.number = num_img                   # number of images need to take
         self.duration = duration                # time between images
-        self.checkpoint_path = "training_1/cp.ckpt"
+        self.checkpoint_path = "model/cp.ckpt"
         self.model = tf.keras.models.Sequential([
-        # YOUR CODE HERE
             tf.keras.layers.Conv2D(16, (3,3), activation='relu', input_shape=(300, 300, 3)),
             tf.keras.layers.MaxPooling2D(2,2),
             tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
@@ -46,7 +45,7 @@ class TakeImage:
     def take(self):
         # create Video Capture
         key = cv2.waitKey(1)
-        camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        camera = cv2.VideoCapture(0)
 
         start = time.time()
         pause = False
@@ -114,14 +113,7 @@ class TakeImage:
                     pred=self.model.predict_generator(test_generator, steps=len(test_generator), verbose=1)
                     print(pred[0])
                     result = findMax(pred[0])
-#                     if findMax(pred[0]) == 'zero':
-#                         result = 0
-#                     if findMax(pred[0]) == 'one':
-#                         result = 1
-#                     if findMax(pred[0]) == 'two':
-#                         result = 2
-                    
-                    #os.remove(path)
+
                     self.count += 1
                     start = time.time()
 
@@ -173,27 +165,6 @@ def findMax(list):
 
 TRAINING_DIR = "data/training"
 VALIDATION_DIR = "data/validation"
-# train_datagen = ImageDataGenerator( 
-#     rescale = 1.0/255,
-#     rotation_range=40,
-#     width_shift_range=0.2,
-#     height_shift_range=0.2,
-#     shear_range=0.2,
-#     zoom_range=0.2,
-#     horizontal_flip=True,
-#     fill_mode='nearest'
-# )
-# test_datagen = ImageDataGenerator(rescale=1./255)
-
-# train_generator = train_datagen.flow_from_directory(TRAINING_DIR,
-#                                                     batch_size=20,
-#                                                     class_mode='categorical',
-#                                                     target_size=(300, 300))
-# validation_generator = test_datagen.flow_from_directory(
-#         VALIDATION_DIR,
-#         target_size=(300, 300),
-#         batch_size=20,
-#         class_mode='categorical')
 
 test = TakeImage("test", 300, 100,1)
 test.take()
