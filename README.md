@@ -16,7 +16,13 @@
 
 ## Introduction
 
+Hand Signs Recognition contains a tool to captures data from the machine's camera and model trained by the data. The model can guesses the shape of hand with more than 92% accuracy. 
+
+![Alt Text](Hnet-image.gif)
+
 ## Build Status
+
+[![Build Status](https://travis-ci.com/travis-ci/travis-web.svg?branch=master)](https://travis-ci.com/travis-ci/travis-web)
 
 ## Requirement
 
@@ -32,13 +38,21 @@ This project requires some python libraries which can be installed via pip3
 
 ## Installation
 
-1. *pip3 install numpy*
+```
+pip3 install numpy
+```
 
-2. *pip3 install pillow*
+```
+pip3 install pillow
+```
 
-3. *pip3 install tensorflow*
+```
+pip3 install tensorflow
+```
 
-4. *pip3 install opencv-python*
+```
+pip3 install opencv-python
+```
 
 ## Usage
 
@@ -61,3 +75,13 @@ This project requires some python libraries which can be installed via pip3
 5. Run the demonstration
 
 ## Contribute  
+
+1. Fork it
+
+2. Create your feature branch
+
+3. Commit your changes
+
+4. Push to the branch
+
+5. Create a new Pull Request
