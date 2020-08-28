@@ -18,7 +18,7 @@
 
 Hand Signs Recognition contains a tool to captures data from the machine's camera and model trained by the data. The model can guesses the shape of hand with more than 92% accuracy. 
 
-![Alt Text](Hnet-image.gif)
+![Alt Text](https://github.com/nguyenhoaihuy/Hand-Signs-Recognition/blob/master/demo.gif?raw=true)
 
 ## Build Status
 
